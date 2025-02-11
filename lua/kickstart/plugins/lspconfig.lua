@@ -199,8 +199,16 @@ return {
               completion = {
                 callSnippet = 'Replace',
               },
-              -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
-              -- diagnostics = { disable = { 'missing-fields' } },
+              workspace = {
+                library = {
+                  vim.fn.stdpath 'data' .. '/lazy/snacks.nvim',
+                },
+              },
+              diagnostics = {
+                -- Ignore Lua_LS's noisy `missing-fields` warnings
+                disable = { 'missing-fields' },
+                globals = { 'vim' },
+              },
             },
           },
         },
