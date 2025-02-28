@@ -39,6 +39,11 @@ vim.keymap.set('n', 'N', "'nN'[v:searchforward].'zv'", { expr = true, desc = 'Pr
 vim.keymap.set('x', 'N', "'nN'[v:searchforward]", { expr = true, desc = 'Prev Search Result' })
 vim.keymap.set('o', 'N', "'nN'[v:searchforward]", { expr = true, desc = 'Prev Search Result' })
 
+-- Window commands
+vim.keymap.set('n', '<leader>-', '<C-W>s', { desc = 'Split Window Below', remap = true })
+vim.keymap.set('n', '<leader>|', '<C-W>v', { desc = 'Split Window Right', remap = true })
+vim.keymap.set('n', '<leader>wd', '<C-W>c', { desc = 'Close Window', remap = true })
+
 -- Add undo break-points
 vim.keymap.set('i', ',', ',<c-g>u')
 vim.keymap.set('i', '.', '.<c-g>u')
