@@ -63,4 +63,19 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+-- C++ specific keymaps
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = { 'c', 'cpp' },
+  callback = function()
+    local opts = { buffer = true }
+    -- Switch between header and source file
+    vim.keymap.set('n', '<leader>gh', '<cmd>ClangdSwitchSourceHeader<cr>', vim.tbl_extend('force', opts, { desc = 'Switch Header/Source' }))
+
+    -- Show type hierarchy
+    vim.keymap.set('n', '<leader>gt', '<cmd>ClangdTypeHierarchy<cr>', vim.tbl_extend('force', opts, { desc = 'Type Hierarchy' }))
+
+    -- Show symbol info
+    vim.keymap.set('n', '<leader>gs', '<cmd>ClangdSymbolInfo<cr>', vim.tbl_extend('force', opts, { desc = 'Symbol Info' }))
+  end,
+})
 -- vim: ts=2 sts=2 sw=2 et
