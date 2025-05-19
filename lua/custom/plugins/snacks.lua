@@ -8,7 +8,17 @@ return {
       bigfile = { enabled = true },
       -- dashboard = { enabled = true },
       debug = { enabled = true },
-      explorer = { enabled = true },
+      explorer = {
+        enabled = true,
+        -- Add this to prevent actions during swap recovery:
+        on_attach = function(bufnr)
+          -- Skip attaching actions if we're in a recovery mode
+          if vim.b[bufnr].swapfile_recovering then
+            return false
+          end
+          return true
+        end,
+      },
       indent = { enabled = true },
       input = { enabled = true },
       lazygit = { enabled = true },
