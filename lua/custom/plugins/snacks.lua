@@ -52,6 +52,7 @@ return {
       { "<leader>.",  function() Snacks.scratch() end, desc = "Toggle Scratch Buffer" },
       { "<leader>S",  function() Snacks.scratch.select() end, desc = "Select Scratch Buffer" },
       { "<leader>bd", function() Snacks.bufdelete() end, desc = "Delete Buffer" },
+      { "<leader>bD", function() Snacks.bufdelete.all() end, desc = "Delete All Buffers" },
       { "<leader>n", function() Snacks.picker.notifications() end, desc = "Notification History" },
       { "<leader>n",  function() Snacks.notifier.show_history() end, desc = "Notification History" },
       { "<leader>un", function() Snacks.notifier.hide() end, desc = "Dismiss All Notifications" },
