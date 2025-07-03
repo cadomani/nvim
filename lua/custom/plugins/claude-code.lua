@@ -3,6 +3,11 @@ return {
   dependencies = { 'nvim-lua/plenary.nvim' },
   config = function()
     require('claude-code').setup {
+      -- Window settings
+      window = {
+        position = 'vertical',
+      },
+
       -- Command variants
       command_variants = {
         continue = '--continue',
