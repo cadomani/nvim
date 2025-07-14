@@ -2,7 +2,7 @@ return {
   {
     -- C++ specific configuration
     'p00f/clangd_extensions.nvim',
-    lazy = false, -- Change from true to false to load immediately
+    lazy = true,
     ft = { 'c', 'cpp', 'objc', 'objcpp', 'cuda', 'proto' },
     dependencies = {
       'neovim/nvim-lspconfig',
