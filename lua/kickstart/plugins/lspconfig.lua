@@ -189,16 +189,30 @@ return {
         'stylua', -- Used to format Lua code
         'clang-format', -- Used to format C/C++ code
         'cpplint', -- Used to lint C/C++ code
+        -- 'prettier', -- TypeScript/JavaScript formatting
+        -- 'eslint_d', -- Optional: for linting
+        'vtsls',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
       require('mason-lspconfig').setup {
-        ensure_installed = vim.tbl_keys(servers),
+        ensure_installed = vim.tbl_keys(servers or {}),
+
         handlers = {
           function(server_name)
-            -- Skip clangd setup here since it's handled by clangd_extensions
-            if server_name == 'clangd' then
-              return
+            -- Skip servers handled by other plugins
+            local skip_servers = {
+              'clangd', -- handled by clangd_extensions
+              'ts_ls', -- replaced by vtsls
+              'tsserver', -- replaced by vtsls
+              'typescript-tools', -- replaced by vtsls
+              'vtsls',
+            }
+
+            for _, skip in ipairs(skip_servers) do
+              if server_name == skip then
+                return
+              end
             end
 
             local server = servers[server_name] or {}
