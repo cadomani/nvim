@@ -74,6 +74,16 @@ return {
           map('<leader>cr', vim.lsp.buf.rename, 'Rename')
           map('<leader>ca', vim.lsp.buf.code_action, 'Code Action', { 'n', 'x' })
           map('<leader>cd', vim.diagnostic.open_float, 'Line Diagnostics')
+          map('K', function()
+            vim.lsp.buf.hover {
+              border = 'rounded',
+              max_width = 100,
+              max_height = 40,
+              wrap = true,
+              focus = false,
+              close_events = { 'CursorMoved', 'BufHidden', 'InsertCharPre' },
+            }
+          end, 'Code Hover')
 
           -- The following two autocommands are used to highlight references of the
           -- word under your cursor when your cursor rests there for a little while.
