@@ -1,4 +1,8 @@
--- Swift Language Support
+-- Swift Language Support (macOS only)
+if vim.fn.has 'mac' == 0 then
+  return {}
+end
+
 return {
   -- Swift LSP Configuration
   {
