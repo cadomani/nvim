@@ -203,10 +203,6 @@ return {
             -- Skip servers handled by other plugins
             local skip_servers = {
               'clangd', -- handled by clangd_extensions
-              'ts_ls', -- replaced by vtsls
-              'tsserver', -- replaced by vtsls
-              'typescript-tools', -- replaced by vtsls
-              'vtsls',
             }
 
             for _, skip in ipairs(skip_servers) do
