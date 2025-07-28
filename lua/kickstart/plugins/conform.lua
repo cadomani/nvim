@@ -1,3 +1,6 @@
+-- Global variable to track formatter toggle state
+vim.g.formatting_enabled = true
+
 return {
   { -- Autoformat
     'stevearc/conform.nvim',
@@ -12,10 +15,25 @@ return {
         mode = '',
         desc = '[F]ormat buffer',
       },
+      {
+        '<leader>uf',
+        function()
+          vim.g.formatting_enabled = not vim.g.formatting_enabled
+          local status = vim.g.formatting_enabled and 'enabled' or 'disabled'
+          vim.notify('Formatting ' .. status, vim.log.levels.INFO)
+        end,
+        mode = '',
+        desc = 'Toggle formatting',
+      },
     },
     opts = {
       notify_on_error = false,
       format_on_save = function(bufnr)
+        -- Return nil if formatting is disabled
+        if not vim.g.formatting_enabled then
+          return nil
+        end
+
         -- Disable "format_on_save lsp_fallback" for languages that don't
         -- have a well standardized coding style. You can add additional
         -- languages here or re-enable it for the disabled ones.
