@@ -49,6 +49,9 @@ vim.keymap.set('i', ',', ',<c-g>u')
 vim.keymap.set('i', '.', '.<c-g>u')
 vim.keymap.set('i', ';', ';<c-g>u')
 
+-- Command abbreviations
+vim.cmd.cabbrev('Qa', 'qa')
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
