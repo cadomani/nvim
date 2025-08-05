@@ -11,6 +11,8 @@ return {
         { path = '${3rd}/luv/library', words = { 'vim%.uv' } },
         { path = 'snacks.nvim', words = { 'Snacks' } },
         { path = 'lazy.nvim', words = { 'LazyVim' } },
+        -- Include installed plugins for type checking
+        { path = vim.fn.stdpath('data') .. '/lazy', words = { 'opts' } },
       },
     },
   },
