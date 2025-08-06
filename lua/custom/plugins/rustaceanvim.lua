@@ -24,7 +24,11 @@ return {
           end,
           default_settings = {
             -- LSP configuration
-            ['rust-analyzer'] = {},
+            ['rust-analyzer'] = {
+              diagnostics = {
+                disabled = { 'inactive-code' },
+              },
+            },
           },
         },
         -- DAP configuration
